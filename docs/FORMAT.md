@@ -21,7 +21,7 @@ A bank is one JSON file, `banks/<id>.easysfx.json`. It holds one-shot **sounds**
 
 | Field | Meaning |
 | --- | --- |
-| `preset` | `coin jump hit hurt powerup select blip footstep door explosion voice` — a seeded generator (like sfxr's buttons) |
+| `preset` | `coin jump hit hurt powerup select blip footstep door explosion rebana rammana voice` — a seeded generator (like sfxr's buttons) |
 | `seed` | integer; the same seed always gives the same params **and** the same noise (deterministic WAV bytes) |
 | `params` | overrides on top of the preset (see the table below); out-of-range values are clamped with a warning |
 | `variants` | 1–8; renders `<id>_0 … <id>_n` (voices spread over ±jitter semitones low → high; other presets re-seeded) |
@@ -82,7 +82,8 @@ Rendering is 4× oversampled, soft-clipped (`tanh`) and written as 16-bit mono P
   Optional `duty`, `vibratoDepth/Speed/Delay`, `tremolo` (re-strike roll in Hz, the ranat *kro*),
   `detune` (cents, second voice), `octave`, `lowpass`.
 * Drum channel (`"instrument": "drums"`): `k` kick, `s` snare, `h` hat, `o` open hat, `c` ching (ฉิ่ง),
-  `p` chap (ฉับ), `g` gong (ฆ้อง), `x` click; combine hits with `+` (`k+c`).
+  `p` chap (ฉับ), `g` gong (ฆ้อง), `x` click, `b` rebana / kompang bung (open bass), `t` rebana / kompang pak
+  (slap), `m` rammana tum (รำมะนา, deep), `a` rammana slap; combine hits with `+` (`k+c`, `b+t`).
 * `loop: true` (default) renders exactly one pass; release tails wrap to the start so the loop is seamless.
   `loop: false` keeps a 2.5 s tail.
 

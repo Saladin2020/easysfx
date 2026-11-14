@@ -17,6 +17,8 @@ export const PRESET_LABELS: Record<Preset, { label: string; th: string }> = {
   footstep: { label: "Footstep", th: "เสียงเท้า" },
   door: { label: "Door creak", th: "ประตูเอี๊ยด" },
   explosion: { label: "Explosion", th: "ระเบิด" },
+  rebana: { label: "Rebana frame drum (open stroke)", th: "รือบานา" },
+  rammana: { label: "Rammana frame drum (deep stroke)", th: "รำมะนา" },
   voice: { label: "Dialogue blip voice", th: "เสียงพิมพ์บทพูด" },
 };
 
@@ -146,6 +148,29 @@ const GENERATORS: Record<Exclude<Preset, "voice">, (r: R) => Partial<SfxParams>>
     lowpass: between(r, 1600, 4200),
     repeat: r() < 0.3 ? between(r, 0.25, 0.4) : 0,
     volume: 0.6,
+  }),
+  // Frame drums of the Malay-Muslim south (rebana / kompang family) and the Thai rammana: a skin "dung" that
+  // drops in pitch right after the hit. Slaps ("tak" / "pak") are drum-kit tokens t and a in tracks.
+  rebana: (r) => ({
+    wave: "sine",
+    freq: between(r, 170, 240),
+    slide: between(r, -5, -3),
+    punch: between(r, 0.45, 0.7),
+    sustain: between(r, 0.01, 0.03),
+    decay: between(r, 0.16, 0.26),
+    vibratoDepth: between(r, 0.05, 0.15),
+    vibratoSpeed: between(r, 6, 10),
+    volume: 0.7,
+  }),
+  rammana: (r) => ({
+    wave: "sine",
+    freq: between(r, 85, 125),
+    slide: between(r, -3.5, -2),
+    punch: between(r, 0.5, 0.8),
+    sustain: between(r, 0.02, 0.05),
+    decay: between(r, 0.3, 0.45),
+    lowpass: between(r, 900, 1600),
+    volume: 0.8,
   }),
 };
 

@@ -91,6 +91,30 @@
       "seed": 5,
       "variants": 4,
       "note": "ผู้ใหญ่บ้าน"
+    },
+    "rebana": {
+      "preset": "rebana",
+      "seed": 2,
+      "note": "รือบานา · rebana open stroke (bung)"
+    },
+    "rebana_pak": {
+      "preset": "rebana",
+      "seed": 2,
+      "params": {
+        "wave": "noise",
+        "freq": 3400,
+        "slide": -0.6,
+        "decay": 0.07,
+        "highpass": 900,
+        "lowpass": 7000,
+        "volume": 0.5
+      },
+      "note": "rebana / kompang slap (pak)"
+    },
+    "rammana": {
+      "preset": "rammana",
+      "seed": 3,
+      "note": "รำมะนา · deep frame drum"
     }
   },
   "tracks": {
@@ -352,6 +376,141 @@
       "order": [
         "A",
         "B"
+      ]
+    },
+    "kompang": {
+      "title": "กลองกอมปัง · Kompang welcome",
+      "note": "Three interlocking kompang (frame drum) parts, bung (b) and pak (t), as played to welcome guests at a Malay wedding or Hari Raya",
+      "bpm": 108,
+      "steps": 4,
+      "loop": true,
+      "channels": [
+        {
+          "name": "kompang 1 (base)",
+          "instrument": "drums"
+        },
+        {
+          "name": "kompang 2 (interlock)",
+          "instrument": "drums",
+          "volume": 0.85
+        },
+        {
+          "name": "kompang 3 (fills)",
+          "instrument": "drums",
+          "volume": 0.75
+        }
+      ],
+      "instruments": {},
+      "patterns": {
+        "A": [
+          "b . t . b . t . b . t . b . t .",
+          ". t . t . t . t . t . t . t . t",
+          "- . . . - . . . - . . . t t t ."
+        ],
+        "B": [
+          "b . t . b . t . b . t . b . t t",
+          ". t . t . t b . . t . t . t b .",
+          "- . . . t . t . - . . . t t b ."
+        ]
+      },
+      "order": [
+        "A",
+        "A",
+        "B",
+        "A",
+        "B"
+      ]
+    },
+    "raya_loop": {
+      "title": "รายอ · Raya (gentle loop)",
+      "note": "Soft G-major Hari Raya loop: plucked gambus-style lead, warm accordion chords, triangle bass, quiet rebana bung/pak. No vocal or call-to-prayer melody.",
+      "bpm": 88,
+      "steps": 4,
+      "loop": true,
+      "channels": [
+        {
+          "name": "gambus",
+          "instrument": "gambus"
+        },
+        {
+          "name": "accordion",
+          "instrument": "accordion",
+          "volume": 0.8
+        },
+        {
+          "name": "bass",
+          "instrument": "bass"
+        },
+        {
+          "name": "rebana",
+          "instrument": "drums",
+          "volume": 0.6
+        }
+      ],
+      "instruments": {
+        "gambus": {
+          "wave": "pluck",
+          "attack": 0,
+          "decay": 0.5,
+          "sustain": 0.3,
+          "release": 0.25,
+          "volume": 0.75,
+          "detune": 4,
+          "lowpass": 3800
+        },
+        "accordion": {
+          "wave": "square",
+          "duty": 0.5,
+          "attack": 0.04,
+          "decay": 0.2,
+          "sustain": 0.65,
+          "release": 0.18,
+          "volume": 0.22,
+          "detune": 6,
+          "lowpass": 1500,
+          "vibratoDepth": 0.06,
+          "vibratoSpeed": 5.5
+        },
+        "bass": {
+          "wave": "triangle",
+          "attack": 0.005,
+          "decay": 0.15,
+          "sustain": 0.7,
+          "release": 0.06,
+          "volume": 0.5
+        }
+      },
+      "patterns": {
+        "A": [
+          "D5 . G5 . B5 . A5 G5 A5 . B5 . D6 . . .",
+          "G4 . . . . . . . D4 . . . . . . .",
+          "G2 . . . D3 . . . G2 . . . D3 . . .",
+          "b . t . . t b . b . t . . t t ."
+        ],
+        "B": [
+          "C6 . B5 A5 B5 . G5 . A5 . F#5 . G5 . . .",
+          "C5 . . . . . . . D4 . . . . . . .",
+          "C3 . . . G2 . . . D3 . . . A2 . . .",
+          "b . t . . t b . b . t . . t t ."
+        ],
+        "C": [
+          "E5 . G5 . A5 . B5 . A5 G5 E5 . D5 . . .",
+          "E4 . . . . . . . C4 . . . . . . .",
+          "E2 . . . B2 . . . C3 . . . G2 . . .",
+          "b . t . . t b . b . t . . t t ."
+        ],
+        "D": [
+          "D5 . E5 G5 A5 . B5 A5 G5 . . . G5 . . -",
+          "D4 . . . . . . . G4 . . . . . . .",
+          "D3 . . . A2 . . . G2 . . . . . . .",
+          "b . t . . t b . b t b t b . . ."
+        ]
+      },
+      "order": [
+        "A",
+        "B",
+        "C",
+        "D"
       ]
     }
   }

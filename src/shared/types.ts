@@ -40,7 +40,7 @@ export interface SfxParams {
   volume: number;
 }
 
-export const PRESETS = ["coin", "jump", "hit", "hurt", "powerup", "select", "blip", "footstep", "door", "explosion", "voice"] as const;
+export const PRESETS = ["coin", "jump", "hit", "hurt", "powerup", "select", "blip", "footstep", "door", "explosion", "rebana", "rammana", "voice"] as const;
 export type Preset = (typeof PRESETS)[number];
 
 export const VOICES = ["mid", "low", "high", "kid", "elder", "monk", "auntie", "robot"] as const;

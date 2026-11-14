@@ -57,7 +57,7 @@ describe("export", () => {
     const m = JSON.parse(readFileSync(path.join(dir, "easysfx.manifest.json"), "utf8"));
     expect(m.bundles.map((b: { name: string }) => b.name)).toEqual(["sfx", "music"]);
     for (const b of m.bundles) for (const a of b.assets) for (const s of a.src) expect(existsSync(path.join(dir, s)), s).toBe(true);
-    expect(m.easysfx.tracks.map((t: { id: string }) => t.id)).toEqual(["village_day", "market_chase", "night_temple"]);
+    expect(m.easysfx.tracks.map((t: { id: string }) => t.id)).toEqual(["village_day", "market_chase", "night_temple", "kompang", "raya_loop"]);
     const helper = readFileSync(path.join(dir, "easysfx-pixi.js"), "utf8");
     expect(helper).toMatch(/attachDialogueBox/);
     expect(readFileSync(path.join(dir, "index.html"), "utf8")).toMatch(/pixi\.js@8/);
