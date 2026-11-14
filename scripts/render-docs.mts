@@ -17,9 +17,12 @@ const sr = bank.sampleRate ?? 44100;
 
 const presetIds = ["coin", "jump", "hit", "hurt", "powerup", "select", "footstep", "door", "explosion", "blip_kid"];
 await writeFile(path.join(out, "presets-waveforms.png"), waveformSheet(presetIds.map((id) => renderRef(bank, id)), { width: 1200, rowHeight: 120 }));
-await writeFile(path.join(out, "tracks-waveforms.png"), waveformSheet(Object.keys(bank.tracks).map((id) => renderRef(bank, id)), { width: 1200, rowHeight: 170 }));
+const RAYA = ["kompang", "raya_loop"];
+await writeFile(path.join(out, "tracks-waveforms.png"), waveformSheet(Object.keys(bank.tracks).filter((id) => !RAYA.includes(id)).map((id) => renderRef(bank, id)), { width: 1200, rowHeight: 170 }));
+// multicultural village: frame drums of the south + the kompang and raya loops
+await writeFile(path.join(out, "raya-waveforms.png"), waveformSheet(["rebana", "rebana_pak", "rammana", ...RAYA].map((id) => renderRef(bank, id)), { width: 1200, rowHeight: 120 }));
 await writeFile(path.join(out, "village_day-waveform.png"), waveformPng(renderRef(bank, "village_day"), { width: 1200, height: 300 }));
-console.log("wrote presets-waveforms.png, tracks-waveforms.png, village_day-waveform.png");
+console.log("wrote presets-waveforms.png, tracks-waveforms.png, raya-waveforms.png, village_day-waveform.png");
 
 if (audio) {
   // Medley: every one-shot with a gap, then each dialogue voice "typing" ten clusters at 30 cps (every 2nd cluster).

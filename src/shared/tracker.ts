@@ -14,7 +14,11 @@ export function noteToMidi(tok: string): number | null {
 
 export const midiToHz = (m: number) => 440 * 2 ** ((m - 69) / 12);
 
-/** Noise-channel drum kit: one-shot sfx params per token. `c`/`p` are the Thai ching/chap cymbals, `g` a small gong. */
+/**
+ * Noise-channel drum kit: one-shot sfx params per token. `c`/`p` are the Thai ching/chap cymbals, `g` a small gong.
+ * Frame drums of the south: `b` rebana / kompang "bung" (open bass), `t` rebana / kompang "pak" (slap),
+ * `m` rammana "tum" (deep), `a` rammana slap.
+ */
 export const DRUM_KIT: Record<string, { label: string; params: Partial<SfxParams> }> = {
   k: { label: "kick", params: { wave: "sine", freq: 150, slide: -5, punch: 0.6, sustain: 0.02, decay: 0.16, volume: 0.9 } },
   s: { label: "snare", params: { wave: "noise", freq: 2600, slide: -0.5, punch: 0.4, sustain: 0.01, decay: 0.13, highpass: 500, volume: 0.55 } },
@@ -24,6 +28,10 @@ export const DRUM_KIT: Record<string, { label: string; params: Partial<SfxParams
   p: { label: "chap", params: { wave: "noise", freq: 7000, sustain: 0.006, decay: 0.06, highpass: 2600, lowpass: 9000, volume: 0.3 } },
   g: { label: "gong", params: { wave: "sine", freq: 98, vibratoDepth: 0.12, vibratoSpeed: 4.5, punch: 0.3, sustain: 0.05, decay: 2.2, volume: 0.7 } },
   x: { label: "click", params: { wave: "square", freq: 1800, sustain: 0.002, decay: 0.01, volume: 0.3 } },
+  b: { label: "rebana bung", params: { wave: "sine", freq: 210, slide: -4, punch: 0.6, sustain: 0.015, decay: 0.2, volume: 0.75 } },
+  t: { label: "rebana pak", params: { wave: "noise", freq: 3400, slide: -0.6, punch: 0.5, sustain: 0.004, decay: 0.07, highpass: 900, lowpass: 7000, volume: 0.5 } },
+  m: { label: "rammana tum", params: { wave: "sine", freq: 105, slide: -2.6, punch: 0.65, sustain: 0.03, decay: 0.36, lowpass: 1300, volume: 0.85 } },
+  a: { label: "rammana slap", params: { wave: "noise", freq: 2200, slide: -0.8, punch: 0.45, sustain: 0.006, decay: 0.1, highpass: 500, lowpass: 5000, volume: 0.45 } },
 };
 
 export interface NoteEvent {

@@ -57,19 +57,26 @@ describe("tracker", () => {
     expect(twice.samples.length).toBe(4 * 22050);
   });
 
-  it("renders the three demo tracks with 4 channels and no clipping", async () => {
+  it("renders the demo tracks (three Thai village loops + kompang + raya) with no clipping", async () => {
     const bank = await sampleBank();
-    expect(Object.keys(bank.tracks)).toEqual(["village_day", "market_chase", "night_temple"]);
+    expect(Object.keys(bank.tracks)).toEqual(["village_day", "market_chase", "night_temple", "kompang", "raya_loop"]);
     for (const [id, t] of Object.entries(bank.tracks)) {
-      expect(t.channels).toHaveLength(4);
+      const n = id === "kompang" ? 3 : 4;
+      expect(t.channels).toHaveLength(n);
       const r = renderTrack(t, { id, sampleRate: 22050, stems: true });
       expect(r.errors).toEqual([]);
-      expect(r.channels).toHaveLength(4);
+      expect(r.channels).toHaveLength(n);
       let peak = 0;
       for (const v of r.samples) peak = Math.max(peak, Math.abs(v));
       expect(peak).toBeGreaterThan(0.2);
       expect(peak).toBeLessThan(1);
     }
+    // kompang: only frame-drum strokes (bung b / pak t), three interlocking parts
+    for (const ch of parseTrack(bank.tracks.kompang!).channels) for (const e of ch.events) for (const d of e.drums ?? []) expect(["b", "t"]).toContain(d);
+    // raya loop: G major, gentle tempo
+    const raya = bank.tracks.raya_loop!;
+    expect(raya.bpm).toBeLessThanOrEqual(96);
+    expect(new Set(parseTrack(raya).channels[0]!.events.map((e) => e.midi! % 12))).toEqual(new Set([7, 9, 11, 0, 2, 4, 6]));
     // Thai feel: the khim lead only uses the C pentatonic (C D E G A)
     const lead = parseTrack(bank.tracks.village_day!).channels[0]!.events;
     expect(new Set(lead.map((e) => e.midi! % 12))).toEqual(new Set([0, 2, 4, 7, 9]));

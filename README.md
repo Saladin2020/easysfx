@@ -47,19 +47,33 @@ and **PixiJS v8** (`@pixi/sound`-ready manifest). Includes typing-blip voices th
 
 | Sounds | Music | Dialogue | Export |
 | --- | --- | --- | --- |
-| 11 presets — coin, jump, hit, hurt, powerup, select, blip, footstep, door, explosion, **voice** — each a seeded generator; override any of 20 parameters; variants; mutate | `easysfx/1` tracker: 4 channels, text patterns (`C5 . E5 -`), order list, square/saw/triangle/sine/noise, **pluck** (khim), additive **partials** (ranat, bells), ching/chap/gong drums, seamless loops | 8 typing-blip voices (`mid low high kid elder monk auntie robot`) × variants; hooks for Easy Dialogue's `DialogueBox` in Godot **and** Pixi | Godot 4.3+ project (`SfxBank` autoload, AudioStreamWAV + AudioStreamOggVorbis, `dialogue_blips.gd`), PixiJS v8 Assets manifest + `SfxBank` helper, WAV/OGG + waveform PNGs, JSON |
+| 13 presets — coin, jump, hit, hurt, powerup, select, blip, footstep, door, explosion, **rebana** (รือบานา), **rammana** (รำมะนา), **voice** — each a seeded generator; override any of 20 parameters; variants; mutate | `easysfx/1` tracker: 4 channels, text patterns (`C5 . E5 -`), order list, square/saw/triangle/sine/noise, **pluck** (khim), additive **partials** (ranat, bells), ching/chap/gong drums, rebana / kompang (bung, pak) and rammana frame drums, seamless loops | 8 typing-blip voices (`mid low high kid elder monk auntie robot`) × variants; hooks for Easy Dialogue's `DialogueBox` in Godot **and** Pixi | Godot 4.3+ project (`SfxBank` autoload, AudioStreamWAV + AudioStreamOggVorbis, `dialogue_blips.gd`), PixiJS v8 Assets manifest + `SfxBank` helper, WAV/OGG + waveform PNGs, JSON |
 
-The demo bank `village` has 16 sounds (5 dialogue voices) and 3 loops:
+The demo bank `village` has 19 sounds (5 dialogue voices, 3 frame drums) and 5 loops:
 
 | Track | Feel |
 | --- | --- |
 | `village_day` · ตลาดเช้า | C–D–E–G–A pentatonic, plucked detuned **khim** lead, **ranat** counter-line with a *kro* roll, triangle bass, **ching/chap** cymbals |
 | `market_chase` · วิ่งไล่ในตลาด | A-minor chiptune: 25 % square lead, 12.5 % arpeggio, triangle bass, noise kit, 144 bpm |
 | `night_temple` · วัดยามค่ำ | slow detuned triangle pads, bell partials, a small gong |
+| `kompang` · กลองกอมปัง | three interlocking kompang parts (bung `b`, pak `t`), the welcome rhythm of Malay weddings and Hari Raya |
+| `raya_loop` · รายอ | gentle G-major Hari Raya loop: plucked gambus-style lead, soft accordion chords, triangle bass, quiet rebana |
 
 <p align="center">
   <img src="docs/assets/presets-waveforms.png" width="440" alt="Waveforms of ten presets" />
   <img src="docs/assets/tracks-waveforms.png" width="440" alt="Waveforms of the three demo tracks" />
+</p>
+
+**Multicultural village · หมู่บ้านพหุวัฒนธรรม**: the Easy Suite samples share one southern Thai town where
+Buddhist, Muslim and Chinese-Thai neighbours live side by side. Alongside the Thai khim, ranat and ching, the
+bank now has the frame drums of the Malay-Muslim south and the Thai rammana: `rebana` / `rebana_pak` (open
+bung and slap pak), `rammana` (deep), the `kompang` welcome rhythm and the gentle `raya_loop`, which Easy
+Quest's `ramadan_raya` questline plays with `@sfx raya_loop`. These are instrument and festive sounds only.
+Easy SFX does not synthesise the adhan (call to prayer) or any Quran recitation, and none of the melodies
+imitate them.
+
+<p align="center">
+  <img src="docs/assets/raya-waveforms.png" width="700" alt="Waveforms: rebana, rebana pak, rammana, kompang loop and the raya loop" />
 </p>
 
 ## Quick start
@@ -199,7 +213,9 @@ Ports: API / editor 8828 · MCP HTTP 8829 · Vite 5178.
 
 Seven small, local-first tools that share one look (teak, lantern gold, Kanit, 16/48px pixels), one
 workflow (CLI · web editor · MCP server) and the same targets (**Godot 4.3+** and **PixiJS v8**).
-ชุดเครื่องมือทำเกมพิกเซลสไตล์ไทย ใช้ร่วมกันได้ทั้งชุด
+ชุดเครื่องมือทำเกมพิกเซลสไตล์ไทย ใช้ร่วมกันได้ทั้งชุด  
+The samples share one multicultural southern Thai village: Buddhist temple, wooden kampung mosque and
+Chinese-Thai shrine on the same street. หมู่บ้านพหุวัฒนธรรม วัด มัสยิด ศาลเจ้า อยู่ร่วมกันในเมืองเดียว
 
 | | Tool | What it does | Repo |
 |:-:|---|---|---|
